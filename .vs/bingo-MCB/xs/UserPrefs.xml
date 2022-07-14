@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{8C207B47-4498-410D-BA77-A73F20342758}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="bingo-MCB/Program.cs">
+    <Files>
+      <File FileName="bingo-MCB/Program.cs" Line="331" Column="2" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="bingo-MCB" expanded="True">
+            <Node name="bingo-MCB" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.bingo-MCB PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

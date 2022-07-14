@@ -16,6 +16,40 @@ namespace challenge_test
     class Program
     {
 
+        // Function to check if an array is
+        // subarray of another array
+        static bool isSubset(int[] arr1,
+          int[] arr2,
+          int m, int n)
+        {
+            int i = 0;
+            int j = 0;
+            for (i = 0; i < n; i++)
+            {
+                for (j = 0; j < m; j++)
+                    if (arr2[i] == arr1[j])
+                        break;
+
+                /* If the above inner loop
+                was not broken at all then
+                arr2[i] is not present in
+                arr1[] */
+                if (j == m)
+                    return false;
+            }
+
+            /* If we reach here then all
+            elements of arr2[] are present
+            in arr1[] */
+            return true;
+        }
+
+        public static bool checkEquality(int[] first, int[] second)
+        {
+            bool isEqual = isSubset(first, second, first.Length, second.Length);
+            //bool isSubset = !second.Except(first).Any();
+            return isEqual;
+        }
 
         static void Main(string[] args)
         {
@@ -176,7 +210,41 @@ namespace challenge_test
                                 Console.WriteLine("You have drawn " + rInt + "!");
                                 //Console.WriteLine("=======> " + checkEquality(compareLog, row1));
                                 //Console.WriteLine("=======> " + checkEquality(compareLog, row2));
-                               
+                                if (compareLog.Length > 14 & checkEquality(compareLog, nums))
+                                {
+                                    Console.BackgroundColor = ConsoleColor.Blue;
+                                    Console.WriteLine("BINGO! YOU WIN. All your numbers match");
+                                    score = score + 1500;
+                                    Console.WriteLine("Your score is " + score);
+                                    Console.WriteLine("Thank you for playing :)");
+                                    Console.ResetColor();
+                                }
+                                else if (compareLog.Length > 4)
+                                {
+                                    Console.BackgroundColor = ConsoleColor.Blue;
+                                    if (!row1Win && checkEquality(compareLog, row1))
+                                    {
+                                        row1Win = true;
+                                        Console.WriteLine("BINGO! Your row 1 matched.");
+                                        score = score + 100;
+                                        Console.WriteLine("Your score is " + score);
+                                    }
+                                    if (!row2Win && checkEquality(compareLog, row2))
+                                    {
+                                        row2Win = true;
+                                        Console.WriteLine("BINGO! Your row 1 matched.");
+                                        score = score + 100;
+                                        Console.WriteLine("Your score is " + score);
+                                    }
+                                    if (!row3Win && checkEquality(compareLog, row3))
+                                    {
+                                        row3Win = true;
+                                        Console.WriteLine("BINGO! Your row 1 matched.");
+                                        score = score + 100;
+                                        Console.WriteLine("Your score is " + score);
+                                    }
+                                    Console.ResetColor();
+
                                 }
                                 Console.WriteLine();
                                 break;

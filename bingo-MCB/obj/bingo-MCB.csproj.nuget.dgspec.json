@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/blackhat/Projects/bingo-MCB/bingo-MCB/bingo-MCB.csproj": {}
+    "/Users/blackhat/Work/bingo-game-MCB/bingo-MCB/bingo-MCB.csproj": {}
   },
   "projects": {
-    "/Users/blackhat/Projects/bingo-MCB/bingo-MCB/bingo-MCB.csproj": {
+    "/Users/blackhat/Work/bingo-game-MCB/bingo-MCB/bingo-MCB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/blackhat/Projects/bingo-MCB/bingo-MCB/bingo-MCB.csproj",
+        "projectUniqueName": "/Users/blackhat/Work/bingo-game-MCB/bingo-MCB/bingo-MCB.csproj",
         "projectName": "bingo-MCB",
-        "projectPath": "/Users/blackhat/Projects/bingo-MCB/bingo-MCB/bingo-MCB.csproj",
+        "projectPath": "/Users/blackhat/Work/bingo-game-MCB/bingo-MCB/bingo-MCB.csproj",
         "packagesPath": "/Users/blackhat/.nuget/packages/",
-        "outputPath": "/Users/blackhat/Projects/bingo-MCB/bingo-MCB/obj/",
+        "outputPath": "/Users/blackhat/Work/bingo-game-MCB/bingo-MCB/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/blackhat/.nuget/NuGet/NuGet.Config"
