@@ -31,6 +31,26 @@ namespace challenge_test
 
             return nums.SubArray(0,15);
         }
+
+        public int[] generateCardRows(int[] generatedCardNumbers, int rowNumber, int Columns) {
+            return generatedCardNumbers.SubArray(rowNumber, Columns);
+        }
+    }
+
+    class DrawNumber {
+
+        private int upperLimit;
+        private int lowerLimit;
+
+        public DrawNumber(int lower, int upper) {
+            upperLimit = upper;
+        }
+
+        public int drawNumberFromCard() {
+            Random r = new Random(); //Random number generator
+        return r.Next(lowerLimit, upperLimit);
+    }
+
     }
     class BingoGame {
         // Function to check if an array is
@@ -72,10 +92,9 @@ namespace challenge_test
 
             var bingoCard = new BingoCard();
             int[] cardNumbers = bingoCard.genrateCard(3,5,60);
-
-            int[] row1 = cardNumbers.SubArray(0, 5);
-            int[] row2 = cardNumbers.SubArray(5, 5);
-            int[] row3 = cardNumbers.SubArray(10, 5);
+            int[] row1 = bingoCard.generateCardRows(cardNumbers, 0, 5);
+            int[] row2 = bingoCard.generateCardRows(cardNumbers, 5, 5);
+            int[] row3 = bingoCard.generateCardRows(cardNumbers, 10, 5);
 
             int tester = 0;
             int index = 0; //int index represents the amount of numbers that have been drawn and the position to dump new numbers into ARRAY
@@ -91,8 +110,10 @@ namespace challenge_test
             int[] logOrdered = new int[upper]; //creates second Array that will later be used to sort values by lowest-to-highest
 
             //RANDOM INITIATOR 
-            Random r = new Random(); //Random number generator
-            int rInt = r.Next(1, upper);
+            var drawNumber = new DrawNumber(1, upper);
+            int drawnNumber = drawNumber.drawNumberFromCard();
+
+
             Console.WriteLine("Welcome to the MCB Bingo Club.");
 
             while (menu != "4")
@@ -106,7 +127,7 @@ namespace challenge_test
                     if (Array.IndexOf(log, row1[i]) != -1)
                     {
 
-                        if (row1[i] == rInt)
+                        if (row1[i] == drawnNumber)
                         {
                             Console.BackgroundColor = ConsoleColor.Red;
                             Console.Write(row1[i] + " ");
@@ -133,7 +154,7 @@ namespace challenge_test
                     if (Array.IndexOf(log, row2[i]) != -1)
                     {
 
-                        if (row2[i] == rInt)
+                        if (row2[i] == drawnNumber)
                         {
                             Console.BackgroundColor = ConsoleColor.Red;
                             Console.Write(row2[i] + " ");
@@ -160,7 +181,7 @@ namespace challenge_test
                     if (Array.IndexOf(log, row3[i]) != -1)
                     {
 
-                        if (row3[i] == rInt)
+                        if (row3[i] == drawnNumber)
                         {
                             Console.BackgroundColor = ConsoleColor.Red;
                             Console.Write(row3[i] + " ");
@@ -204,19 +225,19 @@ namespace challenge_test
                         while (tester == 0)
                         { //drawns a random number and searches the array to see if drawn number already exists. If it does will draw another number and repeat until an original number is drawn
                             DupChk = false;
-                            rInt = r.Next(1, upper + 1);
+                            drawnNumber = drawNumber.drawNumberFromCard();
                             for (int i = 0; i < index; i++)
                             {
-                                if (log[i] == rInt) DupChk = true;
+                                if (log[i] == drawnNumber) DupChk = true;
                             }
                             if (DupChk == false)
                             {
-                                log[index] = rInt;
+                                log[index] = drawnNumber;
                                 index++;
                                 int[] compareLog = log.SubArray(0, index);
                                 
 
-                                Console.WriteLine("You have drawn " + rInt + "!");
+                                Console.WriteLine("You have drawn " + drawnNumber + "!");
 
 
                                 if (compareLog.Length > 14 & checkEquality(compareLog, cardNumbers))
