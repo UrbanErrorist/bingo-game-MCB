@@ -16,12 +16,7 @@ namespace bingo_MCB
                 nums[randomIndex] = nums[i];
                 nums[i] = temp;
             }
-            //int[] temp2 = nums.SubArray(0, total, false);
-            //for (int i = 0; i < temp2.Length; i++)
-            //{
-            //    Console.WriteLine("==> "+ temp2[i]);
-
-            //}
+            
 
             return nums.SubArray(0, total, false);
         }

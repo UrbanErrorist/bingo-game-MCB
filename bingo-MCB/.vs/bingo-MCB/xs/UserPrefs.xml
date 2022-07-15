@@ -1,8 +1,17 @@
 ﻿<Properties StartupConfiguration="{8A3515D7-3386-4D32-AA90-69A85EC31AAF}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.bingo-MCB PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="bingoGame.cs">
     <Files>
-      <File FileName="Program.cs" Line="196" Column="22" />
+      <File FileName="Program.cs" Line="26" Column="44" />
+      <File FileName="bingoGame.cs" Line="53" Column="1" />
+      <File FileName="bingoCard.cs" Line="24" Column="16" />
+      <File FileName="drawNumber.cs" Line="9" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,10 +26,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
