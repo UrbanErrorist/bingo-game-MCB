@@ -44,7 +44,8 @@ namespace challenge_test
 
         public DrawNumber(int lower, int upper) {
             upperLimit = upper;
-        }
+            lowerLimit = lower;
+    }
 
         public int drawNumberFromCard() {
             Random r = new Random(); //Random number generator
@@ -53,6 +54,15 @@ namespace challenge_test
 
     }
     class BingoGame {
+
+        //Number of drawns in the game (default = 30)
+        int nDrawn;
+
+        //constructor to set the number of drawns in the game.
+        public BingoGame(int number) {
+            nDrawn = number;
+        }
+
         // Function to check if an array is
         // subarray of another array
          bool isSubset(int[] arr1,
@@ -214,7 +224,7 @@ namespace challenge_test
                 if (menu == "1")
                 {
 
-                    if (index >= 29)
+                    if (index >= nDrawn-1)
                     { //If there are no more numbers to be drawn function stops
                         Console.Clear();
                         return "The game is Over. Your Score is " + score + "\nThanks for playing!";
@@ -364,7 +374,7 @@ namespace challenge_test
 
         static void Main(string[] args)
         {
-            var bingoGame = new BingoGame();
+            var bingoGame = new BingoGame(30);
             string resultMessage = bingoGame.playBingo();
 
             Console.WriteLine(resultMessage);
