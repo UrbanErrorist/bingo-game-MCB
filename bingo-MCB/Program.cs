@@ -7,18 +7,35 @@ public static class Extensions
     {
         T[] result = new T[length];
         Array.Copy(array, offset, result, 0, length);
+        Array.Sort(result);
         return result;
     }
 }
 
 namespace challenge_test
 {
-    class Program
-    {
 
+    class BingoCard {
+        public int[] genrateCard(int row, int column, int upperLimit) {
+            int total = row * column;
+            int[] nums = Enumerable.Range(1, upperLimit).ToArray();
+            Random rnd = new();
+
+            for (int i = 0; i < nums.Length; i++)
+            {
+                int randomIndex = rnd.Next(1, nums.Length);
+                int temp = nums[randomIndex];
+                nums[randomIndex] = nums[i];
+                nums[i] = temp;
+            }
+
+            return nums.SubArray(0,15);
+        }
+    }
+    class BingoGame {
         // Function to check if an array is
         // subarray of another array
-        static bool isSubset(int[] arr1,
+         bool isSubset(int[] arr1,
           int[] arr2,
           int m, int n)
         {
@@ -44,30 +61,21 @@ namespace challenge_test
             return true;
         }
 
-        public static bool checkEquality(int[] first, int[] second)
+         bool checkEquality(int[] first, int[] second)
         {
             bool isEqual = isSubset(first, second, first.Length, second.Length);
             //bool isSubset = !second.Except(first).Any();
             return isEqual;
         }
 
-        static void Main(string[] args)
-        {
+        public string playBingo() {
 
-            int[] nums = Enumerable.Range(1, 16).ToArray();
-            Random rnd = new Random();
+            var bingoCard = new BingoCard();
+            int[] cardNumbers = bingoCard.genrateCard(3,5,60);
 
-            for (int i = 0; i < nums.Length; i++)
-            {
-                int randomIndex = rnd.Next(1, nums.Length);
-                int temp = nums[randomIndex];
-                nums[randomIndex] = nums[i];
-                nums[i] = temp;
-            }
-
-            int[] row1 = nums.SubArray(0, 5);
-            int[] row2 = nums.SubArray(5, 5);
-            int[] row3 = nums.SubArray(10, 5);
+            int[] row1 = cardNumbers.SubArray(0, 5);
+            int[] row2 = cardNumbers.SubArray(5, 5);
+            int[] row3 = cardNumbers.SubArray(10, 5);
 
             int tester = 0;
             int index = 0; //int index represents the amount of numbers that have been drawn and the position to dump new numbers into ARRAY
@@ -185,10 +193,10 @@ namespace challenge_test
                 if (menu == "1")
                 {
 
-                    if (index >= upper & index >= 30)
+                    if (index >= 69)
                     { //If there are no more numbers to be drawn function stops
                         Console.Clear();
-                        Console.WriteLine("You have reached the upper limit. You Lose this round");
+                        return "The game is Over. Your Score is " + score + "\nThanks for playing!";
                     }
                     else
                     {
@@ -204,20 +212,18 @@ namespace challenge_test
                             if (DupChk == false)
                             {
                                 log[index] = rInt;
-                                int[] compareLog = log.SubArray(0, index);
                                 index++;
+                                int[] compareLog = log.SubArray(0, index);
+                                
 
                                 Console.WriteLine("You have drawn " + rInt + "!");
-                                //Console.WriteLine("=======> " + checkEquality(compareLog, row1));
-                                //Console.WriteLine("=======> " + checkEquality(compareLog, row2));
-                                if (compareLog.Length > 14 & checkEquality(compareLog, nums))
+
+
+                                if (compareLog.Length > 14 & checkEquality(compareLog, cardNumbers))
                                 {
-                                    Console.BackgroundColor = ConsoleColor.Blue;
-                                    Console.WriteLine("BINGO! YOU WIN. All your numbers match");
-                                    score = score + 1500;
-                                    Console.WriteLine("Your score is " + score);
-                                    Console.WriteLine("Thank you for playing :)");
-                                    Console.ResetColor();
+                                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                                    score = 1500;
+                                    return "BINGO! YOU WIN. All your numbers match.\nYour score is " + score + "\nThank you for playing :)";
                                 }
                                 else if (compareLog.Length > 4)
                                 {
@@ -232,14 +238,14 @@ namespace challenge_test
                                     if (!row2Win && checkEquality(compareLog, row2))
                                     {
                                         row2Win = true;
-                                        Console.WriteLine("BINGO! Your row 1 matched.");
+                                        Console.WriteLine("BINGO! Your row 2 matched.");
                                         score = score + 100;
                                         Console.WriteLine("Your score is " + score);
                                     }
                                     if (!row3Win && checkEquality(compareLog, row3))
                                     {
                                         row3Win = true;
-                                        Console.WriteLine("BINGO! Your row 1 matched.");
+                                        Console.WriteLine("BINGO! Your row 3 matched.");
                                         score = score + 100;
                                         Console.WriteLine("Your score is " + score);
                                     }
@@ -320,11 +326,27 @@ namespace challenge_test
                 //EXIT GAME//
                 else if (menu == "4")
                 {
-                    Console.WriteLine("Thank you for playing :)");
+                    return "You quit the game. Thank you for playing!";
                 }
                 else Console.WriteLine("Invalid Selection");
 
             }
+            return "Thank you for playing";
+        }
+        
+    }
+
+    class Program
+    {
+
+        
+
+        static void Main(string[] args)
+        {
+            var bingoGame = new BingoGame();
+            string resultMessage = bingoGame.playBingo();
+
+            Console.WriteLine(resultMessage);
         }
 
     }
