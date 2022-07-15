@@ -193,7 +193,7 @@ namespace challenge_test
                 if (menu == "1")
                 {
 
-                    if (index >= 69)
+                    if (index >= 29)
                     { //If there are no more numbers to be drawn function stops
                         Console.Clear();
                         return "The game is Over. Your Score is " + score + "\nThanks for playing!";
